@@ -21,9 +21,7 @@ function Fatture() {
           </div>
         </Col>
         <Col xs={12}>
-          <ListGroup>
-            <ListaFattura />
-          </ListGroup>
+          <ListGroup></ListGroup>
         </Col>
       </Row>
     </Container>

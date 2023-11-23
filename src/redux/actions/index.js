@@ -2,6 +2,8 @@ export const GET_FATTURE = "GET_FATTURE";
 
 export const TOKEN = "TOKEN";
 export const GET_CLIENTI = "GET_CLIENTI";
+export const GET_USERS = "GET_USERS";
+
 // const headers = {
 //   headers: {
 //     Authorization: "Bearer ",
@@ -9,13 +11,12 @@ export const GET_CLIENTI = "GET_CLIENTI";
 // };
 const baseEndPointfatture = "http://localhost:3001/fatture";
 export const fetchFatture = () => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       let resp = await fetch(baseEndPointfatture, {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNzAwNTc0MjYxLCJleHAiOjE3MDExNzkwNjF9.3e4uw2V3-ECTm3CeD8xx8SzAwKN2qPf3zamSY-NNVek",
+          Authorization: "Bearer " + getState().token.content,
         },
       });
       if (resp.ok) {
@@ -93,6 +94,43 @@ export const deleteCliente = (data) => {
     console.log(data);
     try {
       const resp = await fetch(baseEndPoint + "/clienti/" + data, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + getState().token.content,
+        },
+      });
+      if (resp.ok) {
+        alert("Delete Con Successo");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getUsers = () => {
+  return async (dispatch, getState) => {
+    try {
+      const resp = await fetch(baseEndPoint + "/users", {
+        headers: {
+          Authorization: "Bearer " + getState().token.content,
+        },
+      });
+      if (resp.ok) {
+        let fetchedUsers = await resp.json();
+        dispatch({ type: GET_USERS, payload: fetchedUsers.content });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const deleteUsers = (data) => {
+  return async (dispatch, getState) => {
+    console.log(data);
+    try {
+      const resp = await fetch(baseEndPoint + "/users/" + data, {
         method: "DELETE",
         headers: {
           Authorization: "Bearer " + getState().token.content,

@@ -2,13 +2,14 @@ import { useEffect } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getClienti } from "../redux/actions";
+import { getClienti, getUsers } from "../redux/actions";
 
 function MyHomePage() {
   const navigation = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getClienti());
+    dispatch(getUsers());
   });
   return (
     <Container>
@@ -25,9 +26,13 @@ function MyHomePage() {
             <div class="card-body">
               <h5 class="card-title">Fatture</h5>
               <p class="card-text">Aggiungi Vedi fatture</p>
-              <a href="/fatture" class="btn btn-primary">
+              <Button
+                onClick={() => {
+                  navigation("/fatture");
+                }}
+              >
                 vai alle fatture
-              </a>
+              </Button>
             </div>
           </div>
         </Col>
@@ -63,9 +68,13 @@ function MyHomePage() {
             <div class="card-body">
               <h5 class="card-title">Gestisci Utenti</h5>
               <p class="card-text">-Elimina -Modifica -Banna</p>
-              <a href="/fatture" class="btn btn-primary">
+              <Button
+                onClick={() => {
+                  navigation("/users");
+                }}
+              >
                 Gestisci
-              </a>
+              </Button>
             </div>
           </div>
         </Col>

@@ -31,19 +31,21 @@ export const fetchFatture = () => {
     }
   };
 };
-export const handleDeleteFattura = async (id) => {
-  try {
-    const response = await fetch(baseEndPoint + "/" + id, {
-      method: "DELETE",
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
-      },
-    });
-    if (response.ok) {
-      alert("Fattura Eliminata con successo!");
+export const handleDeleteFattura = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(baseEndPoint + "/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
+        },
+      });
+      if (response.ok) {
+        alert("Fattura Eliminata con successo!");
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
+  };
 };

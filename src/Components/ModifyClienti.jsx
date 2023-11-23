@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getClienti } from "../redux/actions";
 
-const CreateClienti = () => {
+const ModifyClienti = (props) => {
   const token = useSelector((state) => state.token.content);
   const [nomeContatto, setNomeContatto] = useState("");
   const [cognomeContatto, setCognomeContatto] = useState("");
@@ -37,8 +37,8 @@ const CreateClienti = () => {
     setValidated(true);
 
     try {
-      const response = await fetch("http://localhost:3001/clienti", {
-        method: "POST",
+      const response = await fetch("http://localhost:3001/clienti/" + props.idProp, {
+        method: "PUT",
         body: JSON.stringify({
           ragioneSociale: ragioneSociale,
           partitaIva: partitaIva,
@@ -118,7 +118,7 @@ const CreateClienti = () => {
 
   return (
     <>
-      <Button onClick={handleShow}>Aggiungi</Button>
+      <Button onClick={handleShow}>Modifica</Button>
 
       <Modal show={show} onHide={handleClose} className="mt-3">
         <Form noValidate validated={validated}>
@@ -200,4 +200,4 @@ const CreateClienti = () => {
   );
 };
 
-export default CreateClienti;
+export default ModifyClienti;

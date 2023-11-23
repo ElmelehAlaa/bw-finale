@@ -1,6 +1,7 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCliente } from "../redux/actions";
+import ModifyClienti from "./ModifyClienti";
 
 const ListaClienti = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ListaClienti = () => {
                 <Button onClick={() => dispatch(deleteCliente(clienti.id))}>Remove</Button>
               </Col>
               <Col>
-                <Button>Modify</Button>
+                <ModifyClienti idProp={clienti.id} />
               </Col>
             </Row>
           ))}

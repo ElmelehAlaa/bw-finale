@@ -13,12 +13,16 @@ const ListaClienti = () => {
         <>
           {clientiState.map((clienti, i) => (
             <Row key={i}>
-              <Col>{clienti.id}</Col>
+              <Col xs={2}>{clienti.id}</Col>
               <Col>
                 {clienti.nomeContatto} {clienti.cognomeContatto}
               </Col>
               <Col>{clienti.emailContatto}</Col>
               <Col>{clienti.telefonoContatto}</Col>
+              <Col>{clienti.fatturatoAnnuale}</Col>
+              <Col>
+                Via {clienti.indirizzo1.via} {clienti.indirizzo1.civico} {clienti.indirizzo1.comune.nome}
+              </Col>
               <Col>
                 <Button onClick={() => dispatch(deleteCliente(clienti.id))}>Remove</Button>
               </Col>

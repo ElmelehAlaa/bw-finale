@@ -9,6 +9,14 @@ const Users = () => {
   console.log(userState);
   return (
     <Container>
+      <Row className="mt-5 mb-3">
+        <Col>ID</Col>
+        <Col>Nome Cognome</Col>
+        <Col>Email</Col>
+        <Col>Username</Col>
+        <Col></Col>
+        <Col></Col>
+      </Row>
       {userState.lenght !== 0 ? (
         <>
           {userState.map((clienti, i) => (

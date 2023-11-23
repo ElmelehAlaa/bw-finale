@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-
-import { getClienti, getUsers } from "../redux/actions";
+import { getUsers } from "../redux/actions";
 
 const ModifyUsers = (props) => {
   const token = useSelector((state) => state.token.content);

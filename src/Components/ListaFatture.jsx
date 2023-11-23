@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFatture, handleDeleteFattura } from "../redux/actions";
+import ModifyFatture from "./ModifyFatture";
 
 const ListaFatture = () => {
   const fattureFetched = useSelector((state) => state.fatture.content);
@@ -43,7 +44,7 @@ const ListaFatture = () => {
                     <Button variant="danger" onClick={() => dispatch(handleDeleteFattura(singleFattura.id))}>
                       Elimina
                     </Button>{" "}
-                    <Button variant="primary">Modifica</Button>
+                    <ModifyFatture idProp={singleFattura.id} />
                   </ListGroup.Item>
                 </ListGroup>
               ))

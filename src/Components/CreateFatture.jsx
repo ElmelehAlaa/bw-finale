@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchFatture } from "../redux/actions";
 
 const CreateFatture = () => {

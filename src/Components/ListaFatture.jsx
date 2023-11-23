@@ -38,7 +38,7 @@ const ListaFatture = () => {
                     <strong>Data:</strong> {singleFattura.data}
                   </ListGroup.Item>
                   <ListGroup.Item>
-                    <strong>Stato Fattura:</strong> {singleFattura.stato}
+                    <strong>Stato Fattura:</strong> {singleFattura.statoFattura.stato}
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Button variant="danger" onClick={() => dispatch(handleDeleteFattura(singleFattura.id))}>

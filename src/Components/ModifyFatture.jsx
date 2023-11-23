@@ -7,7 +7,7 @@ const ModifyFatture = (props) => {
   //   const token = useSelector((state) => state.token.content);
 
   const [importo, setImporto] = useState("");
-  const [stato, SetStato] = useState("");
+  const [statoFattura, SetStatoFattura] = useState("");
   const [clienteId, setClienteId] = useState("");
   const [numeroFattura, setNumeroFattura] = useState("");
 
@@ -30,7 +30,7 @@ const ModifyFatture = (props) => {
         method: "PUT",
         body: JSON.stringify({
           importo: importo,
-          stato: stato,
+          statoFattura: statoFattura,
           numeroFattura: numeroFattura,
           clienteId: clienteId,
         }),
@@ -51,8 +51,8 @@ const ModifyFatture = (props) => {
   const handleChangeImporto = (e) => {
     setImporto(e.target.value);
   };
-  const handleChangeStato = (e) => {
-    SetStato(e.target.value);
+  const handleChangeStatoFattura = (e) => {
+    SetStatoFattura(e.target.value);
   };
   const handleChangeNumeroFattura = (e) => {
     setNumeroFattura(e.target.value);
@@ -89,7 +89,7 @@ const ModifyFatture = (props) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom04">
               <Form.Label>stato Fattura</Form.Label>
-              <Form.Control type="text" name="stato" onChange={handleChangeStato} required />
+              <Form.Control type="text" name="statoFattura" onChange={handleChangeStatoFattura} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
           </Modal.Body>

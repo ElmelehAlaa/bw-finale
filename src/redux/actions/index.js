@@ -1,17 +1,17 @@
 export const GET_FATTURE = "GET_FATTURE";
 
-const baseEndPoint = "http://localhost:3001/fatture";
-
+export const TOKEN = "TOKEN";
+export const GET_CLIENTI = "GET_CLIENTI";
 // const headers = {
 //   headers: {
 //     Authorization: "Bearer ",
 //   },
 // };
-
+const baseEndPointfatture = "http://localhost:3001/fatture";
 export const fetchFatture = () => {
   return async (dispatch) => {
     try {
-      let resp = await fetch(baseEndPoint, {
+      let resp = await fetch(baseEndPointfatture, {
         method: "GET",
         headers: {
           Authorization:
@@ -24,6 +24,82 @@ export const fetchFatture = () => {
       } else {
         console.log("error");
         alert("Errore nel reperimento dei dati 'fatture' ");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+const baseEndPoint = "http://localhost:3001";
+
+export const RegisterProfile = (data) => {
+  return async () => {
+    console.log(data);
+    try {
+      let resp = await fetch(baseEndPoint + "/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      return resp.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const LoginProfile = (data) => {
+  return async (dispatch, getState) => {
+    console.log(data);
+    try {
+      const resp = await fetch(baseEndPoint + "/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (resp.ok) {
+        const token = await resp.json();
+        dispatch({ type: TOKEN, payload: token.accessToken });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const getClienti = () => {
+  return async (dispatch, getState) => {
+    try {
+      const resp = await fetch(baseEndPoint + "/clienti", {
+        headers: {
+          Authorization: "Bearer " + getState().token.content,
+        },
+      });
+      if (resp.ok) {
+        let fetchedClienti = await resp.json();
+        dispatch({ type: GET_CLIENTI, payload: fetchedClienti.content });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteCliente = (data) => {
+  return async (dispatch, getState) => {
+    console.log(data);
+    try {
+      const resp = await fetch(baseEndPoint + "/clienti/" + data, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + getState().token.content,
+        },
+      });
+      if (resp.ok) {
+        alert("Delete Con Successo");
       }
     } catch (error) {
       console.log(error);

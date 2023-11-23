@@ -1,15 +1,34 @@
+import { useDispatch, useSelector } from "react-redux";
+import { LoginProfile } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.content);
+  const navigation = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+
+    const body = {
+      password: password,
+      email: email,
+    };
+
+    dispatch(LoginProfile(body));
+  };
   return (
-    <form className="mt-5">
+    <form className="mt-5" onSubmit={handleSubmit}>
       <div class="form-outline mb-4 d-flex flex-column align-items-center ">
-        <input type="email" id="form2Example1" class="form-control w-25" />
+        <input type="email" id="email" class="form-control w-25" />
         <label class="form-label" for="form2Example1">
           Email address
         </label>
       </div>
 
       <div class="form-outline mb-4 d-flex flex-column align-items-center ">
-        <input type="password" id="form2Example2" class="form-control w-25 " />
+        <input type="password" id="password" class="form-control w-25 " />
         <label class="form-label" for="form2Example2">
           Password
         </label>
@@ -31,7 +50,7 @@ function Login() {
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary btn-block mb-4">
+      <button type="submit" class="btn btn-primary btn-block mb-4">
         Sign in
       </button>
 

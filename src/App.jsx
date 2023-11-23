@@ -7,6 +7,8 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyHomePage from "./Components/MyHomePage";
 import Fatture from "./Components/Fatture.jsx";
+import Clienti from "./Components/Clienti";
+import CreateClienti from "./Components/CreateClienti";
 
 function App() {
   return (
@@ -16,9 +18,10 @@ function App() {
         <Routes>
           <Route path="" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route path="/homePage" element={<MyHomePage />} />
           <Route path="/fatture" element={<Fatture />} />
+          <Route path="/home" element={<MyHomePage />} />
+          <Route path="/clienti" element={<Clienti />} />
+          <Route path="/clienti/create" element={<CreateClienti />} />
         </Routes>
       </BrowserRouter>
     </div>

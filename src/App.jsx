@@ -6,6 +6,7 @@ import MyNavBar from "./Components/MyNavBar";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyHomePage from "./Components/MyHomePage";
+import Fatture from "./Components/Fatture.jsx";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/HomePage" element={<MyHomePage />} />
+          <Route path="/homePage" element={<MyHomePage />} />
+          <Route path="/fatture" element={<Fatture />} />
         </Routes>
       </BrowserRouter>
     </div>

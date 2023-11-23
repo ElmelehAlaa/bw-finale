@@ -1,4 +1,4 @@
-import { Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
 function MyHomePage() {
   return (

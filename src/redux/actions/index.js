@@ -1,4 +1,5 @@
 export const GET_FATTURE = "GET_FATTURE";
+export const DELETE_FATTURA = "DELETE_FATTURA";
 
 const baseEndPoint = "http://localhost:3001/fatture";
 
@@ -15,7 +16,7 @@ export const fetchFatture = () => {
         method: "GET",
         headers: {
           Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNzAwNTc0MjYxLCJleHAiOjE3MDExNzkwNjF9.3e4uw2V3-ECTm3CeD8xx8SzAwKN2qPf3zamSY-NNVek",
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
         },
       });
       if (resp.ok) {
@@ -29,4 +30,20 @@ export const fetchFatture = () => {
       console.log(error);
     }
   };
+};
+export const handleDeleteFattura = async (id) => {
+  try {
+    const response = await fetch(baseEndPoint + "/" + id, {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
+      },
+    });
+    if (response.ok) {
+      alert("Fattura Eliminata con successo!");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };

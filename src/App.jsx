@@ -6,6 +6,8 @@ import MyNavBar from "./Components/MyNavBar";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyHomePage from "./Components/MyHomePage";
+
+import ListaFatture from "./Components/ListaFatture.jsx";
 import Fatture from "./Components/Fatture.jsx";
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
 
           <Route path="/homePage" element={<MyHomePage />} />
           <Route path="/fatture" element={<Fatture />} />
+          <Route path="/visualizza-fatture" element={<ListaFatture />} />
         </Routes>
       </BrowserRouter>
     </div>

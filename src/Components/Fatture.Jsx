@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchFatture } from "../redux/actions";
+import CreateFatture from "./CreateFatture";
 
 const Fatture = () => {
   const dispatch = useDispatch();
@@ -24,9 +25,7 @@ const Fatture = () => {
             />
             <div className="card-body">
               <h5 className="card-title">Crea Fattura</h5>
-              <a href="/fatture" className="btn btn-primary">
-                Crea
-              </a>
+              <CreateFatture />
             </div>
           </div>
         </Col>

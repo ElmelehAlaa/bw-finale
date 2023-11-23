@@ -1,20 +1,59 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFatture } from "../redux/actions";
 
 const CreateFatture = () => {
+  //   const token = useSelector((state) => state.token.content);
+  const [clienteId, setClienteId] = useState("");
+  const [importo, setImporto] = useState("");
+  const [numeroFattura, setNumeroFattura] = useState("");
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
   const handleShow = () => {
     setShow(true);
   };
-  const [formData, setFormData] = useState({
-    clienteID: "",
-    importo: "",
-    numeroFattura: "",
-  });
+  const handleSubmit = async (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+    try {
+      const response = await fetch("http://localhost:3001/fatture", {
+        method: "POST",
+        body: JSON.stringify({
+          importo: importo,
+          clienteId: clienteId,
+          numeroFattura: numeroFattura,
+        }),
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNzAwNTc0MjYxLCJleHAiOjE3MDExNzkwNjF9.3e4uw2V3-ECTm3CeD8xx8SzAwKN2qPf3zamSY-NNVek",
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        handleClose();
+        dispatch(fetchFatture());
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleChangeImporto = (e) => {
+    setImporto(e.target.value);
+  };
+  const handleChangeClienteId = (e) => {
+    setClienteId(e.target.value);
+  };
 
+  const handleChangeNumeroFattura = (e) => {
+    setNumeroFattura(e.target.value);
+  };
   return (
     <>
       <Button onClick={handleShow}>Aggiungi</Button>
@@ -28,23 +67,17 @@ const CreateFatture = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="validationCustom01">
               <Form.Label>Cliente ID</Form.Label>
-              <Form.Control type="text" name="clienteID" value={formData.clienteID} onChange={handleChange} required />
+              <Form.Control type="text" name="clienteID" onChange={handleChangeClienteId} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom02">
               <Form.Label>Importo</Form.Label>
-              <Form.Control type="text" name="importo" value={formData.importo} onChange={handleChange} required />
+              <Form.Control type="text" name="importo" onChange={handleChangeImporto} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom03">
               <Form.Label>Numero Fattura</Form.Label>
-              <Form.Control
-                type="text"
-                name="numeroFattura"
-                value={formData.numeroFattura}
-                onChange={handleChange}
-                required
-              />
+              <Form.Control type="text" name="numeroFattura" onChange={handleChangeNumeroFattura} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
           </Modal.Body>
@@ -52,8 +85,8 @@ const CreateFatture = () => {
             <Button variant="secondary" onClick={handleClose}>
               Chiudi
             </Button>
-            <Button type="submit" variant="primary">
-              Salva
+            <Button variant="primary" onClick={(event) => handleSubmit(event)}>
+              Crea Fattura
             </Button>
           </Modal.Footer>
         </Form>

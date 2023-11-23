@@ -2,10 +2,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDispatch } from "react-redux";
 import { RegisterProfile } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 function BasicExample() {
   const dispatch = useDispatch();
-
+  const navigation = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const nome = document.querySelector("#nome").value;
@@ -23,6 +24,7 @@ function BasicExample() {
     };
 
     dispatch(RegisterProfile(body));
+    navigation("");
   };
   return (
     <Form className="d-flex align-items-center flex-column" onSubmit={handleSubmit}>

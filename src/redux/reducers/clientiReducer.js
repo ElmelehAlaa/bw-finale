@@ -14,3 +14,5 @@ const clientiReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default clientiReducer;

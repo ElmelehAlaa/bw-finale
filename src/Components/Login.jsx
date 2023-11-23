@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { LoginProfile, getClienti } from "../redux/actions";
+import { LoginProfile } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token.content);
+  const navigation = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = document.querySelector("#email").value;
@@ -15,8 +17,6 @@ function Login() {
     };
 
     dispatch(LoginProfile(body));
-    dispatch(getClienti());
-    console.log(token);
   };
   return (
     <form className="mt-5" onSubmit={handleSubmit}>

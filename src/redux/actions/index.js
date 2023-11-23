@@ -54,7 +54,25 @@ export const getClienti = () => {
       });
       if (resp.ok) {
         let fetchedClienti = await resp.json();
-        dispatch({ type: GET_CLIENTI, payload: fetchedClienti.data });
+        dispatch({ type: GET_CLIENTI, payload: fetchedClienti.content });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteCliente = (data) => {
+  return async (dispatch, getState) => {
+    console.log(data);
+    try {
+      const resp = await fetch(baseEndPoint + "/cliente/" + data, {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + getState().token.content,
+        },
+      });
+      if (resp.ok) {
+        return resp.json();
       }
     } catch (error) {
       console.log(error);

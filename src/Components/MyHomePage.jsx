@@ -1,6 +1,15 @@
-import { Col, Container, Form, Image, Modal, Row } from "react-bootstrap";
+import { useEffect } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getClienti } from "../redux/actions";
 
 function MyHomePage() {
+  const navigation = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getClienti());
+  });
   return (
     <Container>
       <Row>
@@ -33,9 +42,13 @@ function MyHomePage() {
             <div class="card-body">
               <h5 class="card-title">Clienti</h5>
               <p class="card-text">Aggiungi</p>
-              <a href="/fatture" class="btn btn-primary">
+              <Button
+                onClick={() => {
+                  navigation("/clienti");
+                }}
+              >
                 vai ai clienti
-              </a>
+              </Button>
             </div>
           </div>
         </Col>

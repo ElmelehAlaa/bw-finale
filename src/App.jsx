@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyHomePage from "./Components/MyHomePage";
 import Clienti from "./Components/Clienti";
+import CreateClienti from "./Components/CreateClienti";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="/home" element={<MyHomePage />} />
           <Route path="/clienti" element={<Clienti />} />
+          <Route path="/clienti/create" element={<CreateClienti />} />
         </Routes>
       </BrowserRouter>
     </div>

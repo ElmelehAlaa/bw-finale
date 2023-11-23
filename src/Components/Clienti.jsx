@@ -4,6 +4,7 @@ import ListaClienti from "./ListaClienti";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getClienti } from "../redux/actions";
+import CreateClienti from "./CreateClienti";
 
 function Clienti() {
   return (
@@ -19,7 +20,9 @@ function Clienti() {
             />
             <div class="card-body">
               <h5 class="card-title">Clienti</h5>
-              <p class="card-text">Aggiungi</p>
+              <>
+                <CreateClienti />
+              </>
             </div>
           </div>
         </Col>

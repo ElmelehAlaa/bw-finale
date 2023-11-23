@@ -65,14 +65,14 @@ export const deleteCliente = (data) => {
   return async (dispatch, getState) => {
     console.log(data);
     try {
-      const resp = await fetch(baseEndPoint + "/cliente/" + data, {
+      const resp = await fetch(baseEndPoint + "/clienti/" + data, {
         method: "DELETE",
         headers: {
           Authorization: "Bearer " + getState().token.content,
         },
       });
       if (resp.ok) {
-        return resp.json();
+        alert("Delete Con Successo");
       }
     } catch (error) {
       console.log(error);

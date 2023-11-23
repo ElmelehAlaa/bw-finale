@@ -6,10 +6,10 @@ import { fetchFatture } from "../redux/actions";
 const ModifyFatture = (props) => {
   //   const token = useSelector((state) => state.token.content);
 
-  const [importo, setImporto] = useState("");
-  const [statoFattura, SetStatoFattura] = useState("");
-  const [clienteId, setClienteId] = useState("");
-  const [numeroFattura, setNumeroFattura] = useState("");
+  const [importo, setImporto] = useState(props.importo || "");
+  const [statoFattura, SetStatoFattura] = useState(props.statoFattura || "");
+  const [clienteId, setClienteId] = useState(props.clienteId || "");
+  const [numeroFattura, setNumeroFattura] = useState(props.numeroFattura || "");
 
   const dispatch = useDispatch();
   const [validated, setValidated] = useState(false);
@@ -89,7 +89,11 @@ const ModifyFatture = (props) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom04">
               <Form.Label>stato Fattura</Form.Label>
-              <Form.Control type="text" name="statoFattura" onChange={handleChangeStatoFattura} required />
+              <Form.Control as="select" name="statoFattura" onChange={handleChangeStatoFattura} required>
+                <option value="">Seleziona uno stato</option>
+                <option value="BOZZA">BOZZA</option>
+                <option value="PAGATA">PAGATA</option>{" "}
+              </Form.Control>
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
           </Modal.Body>

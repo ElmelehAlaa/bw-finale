@@ -9,40 +9,25 @@ const baseEndPoint = "http://localhost:3001/fatture";
 //   },
 // };
 
-export const fetchFatture = () => {
+export const fetchFatture = (queryParams) => {
   return async (dispatch) => {
     try {
-      let resp = await fetch(baseEndPoint, {
+      const queryString = new URLSearchParams(queryParams).toString();
+
+      let resp = await fetch(`${baseEndPoint}?${queryString}`, {
         method: "GET",
         headers: {
           Authorization:
             "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
         },
       });
+
       if (resp.ok) {
         let myFattureFetched = await resp.json();
         dispatch({ type: GET_FATTURE, payload: myFattureFetched });
       } else {
         console.log("error");
         alert("Errore nel reperimento dei dati 'fatture' ");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-export const handleDeleteFattura = (id) => {
-  return async (dispatch) => {
-    try {
-      const response = await fetch(baseEndPoint + "/" + id, {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
-        },
-      });
-      if (response.ok) {
-        alert("Fattura Eliminata con successo!");
       }
     } catch (error) {
       console.log(error);

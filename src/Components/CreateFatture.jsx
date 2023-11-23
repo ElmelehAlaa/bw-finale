@@ -5,7 +5,7 @@ import { fetchFatture } from "../redux/actions";
 
 const CreateFatture = () => {
   //   const token = useSelector((state) => state.token.content);
-  const [clienteId, setClienteId] = useState("");
+  const [clientId, setClientId] = useState("");
   const [importo, setImporto] = useState("");
   const [numeroFattura, setNumeroFattura] = useState("");
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const CreateFatture = () => {
         method: "POST",
         body: JSON.stringify({
           importo: importo,
-          clienteId: clienteId,
+          clientId: clientId,
           numeroFattura: numeroFattura,
         }),
         headers: {
@@ -36,9 +36,11 @@ const CreateFatture = () => {
           "Content-Type": "application/json",
         },
       });
+      handleClose();
       if (response.ok) {
-        handleClose();
         dispatch(fetchFatture());
+      } else {
+        alert("errore nella creazione della fattura");
       }
     } catch (error) {
       console.log(error);
@@ -47,8 +49,8 @@ const CreateFatture = () => {
   const handleChangeImporto = (e) => {
     setImporto(e.target.value);
   };
-  const handleChangeClienteId = (e) => {
-    setClienteId(e.target.value);
+  const handleChangeClientId = (e) => {
+    setClientId(e.target.value);
   };
 
   const handleChangeNumeroFattura = (e) => {
@@ -67,7 +69,7 @@ const CreateFatture = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="validationCustom01">
               <Form.Label>Cliente ID</Form.Label>
-              <Form.Control type="text" name="clienteID" onChange={handleChangeClienteId} required />
+              <Form.Control type="text" name="clientId" onChange={handleChangeClientId} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom02">

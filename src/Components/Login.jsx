@@ -23,7 +23,7 @@ function Login() {
   };
   return (
     <div className="background-login">
-      <div className="bg-white loginDiv" style={{ width: "350px", borderRadius: "30px", border: "solid" }}>
+      <div className="bg-white loginDiv p-5" style={{ width: "350px", borderRadius: "30px", border: "solid" }}>
         <form className="mt-5" onSubmit={handleSubmit}>
           <div class="form-outline mb-4 d-flex flex-column align-items-center ">
             <input type="email" id="email" class="form-control " />
@@ -63,7 +63,7 @@ function Login() {
             <p>
               Not a member? <a href="/register">Register</a>
             </p>
-            <p>or sign up with:</p>
+
             <button type="button" class="btn btn-link btn-floating mx-1">
               <i class="fab fa-facebook-f"></i>
             </button>

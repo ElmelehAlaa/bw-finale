@@ -6,15 +6,27 @@ import CreateClienti from "./CreateClienti";
 function Clienti() {
   return (
     <Container>
-      <Row className="mt-5">
-        <Col xs={1}>Id</Col>
-        <Col>Nome Cognome Contatto</Col>
-        <Col xs={2}>Email Contatto</Col>
-        <Col>Telefono Contatto</Col>
-        <Col>Fatturato Annuale</Col>
-        <Col>Via</Col>
-        <Col></Col>
-        <Col xs={2}>
+      <Row className="list-group list-group-horizontal mt-5">
+        <Col xs={1} className="list-group-item">
+          Id
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Nome Cognome Contatto
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Email Contatto
+        </Col>
+        <Col xs={1} className="list-group-item">
+          Telefono Contatto
+        </Col>
+        <Col xs={1} className="list-group-item">
+          Fatturato Annuale
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Via
+        </Col>
+        <Col xs={1} className="list-group-item"></Col>
+        <Col xs={2} className="list-group-item">
           <CreateClienti />
         </Col>
       </Row>

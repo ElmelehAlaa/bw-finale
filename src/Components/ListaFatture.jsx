@@ -5,7 +5,7 @@ import { fetchFatture } from "../redux/actions";
 import ModifyFatture from "./ModifyFatture";
 
 const ListaFatture = () => {
-  const token = useSelector((state) => state.token.content);
+  const token = sessionStorage.getItem("token");
   const fattureFetched = useSelector((state) => state.fatture.content);
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useState({

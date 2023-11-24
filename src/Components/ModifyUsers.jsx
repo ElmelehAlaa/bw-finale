@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../redux/actions";
 
 const ModifyUsers = (props) => {
-  const token = useSelector((state) => state.token.content);
+  const token = sessionStorage.getItem("token");
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
   const [email, setEmail] = useState("");

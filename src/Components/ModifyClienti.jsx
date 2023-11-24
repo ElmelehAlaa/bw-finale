@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getClienti } from "../redux/actions";
 
 const ModifyClienti = (props) => {
-  const token = useSelector((state) => state.token.content);
+  const token = sessionStorage.getItem("token");
   const [nomeContatto, setNomeContatto] = useState("");
   const [cognomeContatto, setCognomeContatto] = useState("");
   const [emailContatto, setEmailContatto] = useState("");

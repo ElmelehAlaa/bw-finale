@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchFatture } from "../redux/actions";
 
 const ModifyFatture = (props) => {
-  const token = useSelector((state) => state.token.content);
+  const token = sessionStorage.getItem("token");
   const [importo, setImporto] = useState(props.importo || "");
   const [statoFattura, SetStatoFattura] = useState(props.statoFattura || "");
   const [clienteId, setClienteId] = useState(props.clienteId || "");

@@ -2,8 +2,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import ListaClienti from "./ListaClienti";
 
 import CreateClienti from "./CreateClienti";
+import { useEffect } from "react";
+import { getClienti } from "../redux/actions";
+import { useDispatch } from "react-redux";
 
 function Clienti() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getClienti());
+    console.log("getClienti");
+  }, []);
+
   return (
     <Container fluid>
       <Row className="list-group list-group-horizontal mt-5">

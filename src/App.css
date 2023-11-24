@@ -55,3 +55,27 @@
   justify-content: center;
   align-items: center;
 }
+
+.background-register {
+  background-image: url("https://www.commercialistatelematico.com/wp-content/uploads/2023/11/fatturazione-elettronica-forfettari.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-login {
+  background-image: url("https://www.commercialistatelematico.com/wp-content/uploads/2023/11/fatturazione-elettronica-forfettari.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginDiv {
+  border-color: cornflowerblue;
+}

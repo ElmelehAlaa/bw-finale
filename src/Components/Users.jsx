@@ -1,11 +1,16 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUsers } from "../redux/actions";
+import { deleteUsers, getClienti, getUsers } from "../redux/actions";
 import ModifyUsers from "./ModifyUsers";
+import { useEffect } from "react";
 
 const Users = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.users.content);
+  useEffect(() => {
+    dispatch(getUsers());
+    console.log("getUsers");
+  }, []);
   console.log(userState);
   return (
     <Container>

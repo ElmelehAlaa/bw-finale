@@ -5,11 +5,6 @@ export const TOKEN = "TOKEN";
 export const GET_CLIENTI = "GET_CLIENTI";
 export const GET_USERS = "GET_USERS";
 
-// const headers = {
-//   headers: {
-//     Authorization: "Bearer ",
-//   },
-// };
 const baseEndPointFatture = "http://localhost:3001/fatture";
 export const fetchFatture = (queryParams) => {
   return async (dispatch, getState) => {
@@ -19,7 +14,7 @@ export const fetchFatture = (queryParams) => {
       let resp = await fetch(`${baseEndPointFatture}?${queryString}`, {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       });
 
@@ -70,6 +65,7 @@ export const LoginProfile = (data) => {
       if (resp.ok) {
         const token = await resp.json();
         dispatch({ type: TOKEN, payload: token.accessToken });
+        sessionStorage.setItem("token", token.accessToken);
       }
     } catch (error) {
       console.log(error);
@@ -77,11 +73,11 @@ export const LoginProfile = (data) => {
   };
 };
 export const getClienti = () => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     try {
       const resp = await fetch(baseEndPoint + "/clienti", {
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       });
       if (resp.ok) {
@@ -100,7 +96,7 @@ export const deleteCliente = (data) => {
       const resp = await fetch(baseEndPoint + "/clienti/" + data, {
         method: "DELETE",
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       });
       if (resp.ok) {
@@ -118,7 +114,7 @@ export const getUsers = () => {
     try {
       const resp = await fetch(baseEndPoint + "/users", {
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       });
       if (resp.ok) {
@@ -138,7 +134,7 @@ export const deleteUsers = (data) => {
       const resp = await fetch(baseEndPoint + "/users/" + data, {
         method: "DELETE",
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
         },
       });
       if (resp.ok) {

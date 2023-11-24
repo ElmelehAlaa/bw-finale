@@ -1,16 +1,13 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchFatture } from "../redux/actions";
 import CreateFatture from "./CreateFatture";
+import { useNavigate } from "react-router-dom";
 
 const Fatture = () => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchFatture());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const navigation = useNavigate();
 
   return (
     <Container>
@@ -40,9 +37,13 @@ const Fatture = () => {
             />
             <div className="card-body">
               <h5 className="card-title">Visualizza tutte le Fatture</h5>
-              <a href="/visualizza-fatture" className="btn btn-primary">
+              <Button
+                onClick={() => {
+                  navigation("/visualizza-fatture");
+                }}
+              >
                 Visualizza
-              </a>
+              </Button>
             </div>
           </div>
         </Col>

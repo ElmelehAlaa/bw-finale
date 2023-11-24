@@ -10,17 +10,16 @@ export const GET_USERS = "GET_USERS";
 //     Authorization: "Bearer ",
 //   },
 // };
-
+const baseEndPointFatture = "http://localhost:3001/fatture";
 export const fetchFatture = (queryParams) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       const queryString = new URLSearchParams(queryParams).toString();
 
-      let resp = await fetch(`${baseEndPoint}?${queryString}`, {
+      let resp = await fetch(`${baseEndPointFatture}?${queryString}`, {
         method: "GET",
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
+          Authorization: "Bearer " + getState().token.content,
         },
       });
 
@@ -106,6 +105,7 @@ export const deleteCliente = (data) => {
       });
       if (resp.ok) {
         alert("Delete Con Successo");
+        getClienti();
       }
     } catch (error) {
       console.log(error);

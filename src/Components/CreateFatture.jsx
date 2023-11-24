@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchFatture } from "../redux/actions";
 
 const CreateFatture = () => {
-  //   const token = useSelector((state) => state.token.content);
-  const [clientId, setClientId] = useState("");
+  const token = useSelector((state) => state.token.content);
+  const [clienteId, setClienteId] = useState("");
   const [importo, setImporto] = useState("");
   const [numeroFattura, setNumeroFattura] = useState("");
   const dispatch = useDispatch();
@@ -27,17 +27,17 @@ const CreateFatture = () => {
         method: "POST",
         body: JSON.stringify({
           importo: importo,
-          clientId: clientId,
+          clienteId: clienteId,
           numeroFattura: numeroFattura,
         }),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNzAwNTc0MjYxLCJleHAiOjE3MDExNzkwNjF9.3e4uw2V3-ECTm3CeD8xx8SzAwKN2qPf3zamSY-NNVek",
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
       });
       handleClose();
       if (response.ok) {
+        alert("fattura creata con successo!");
         dispatch(fetchFatture());
       } else {
         alert("errore nella creazione della fattura");
@@ -50,7 +50,7 @@ const CreateFatture = () => {
     setImporto(e.target.value);
   };
   const handleChangeClientId = (e) => {
-    setClientId(e.target.value);
+    setClienteId(e.target.value);
   };
 
   const handleChangeNumeroFattura = (e) => {
@@ -69,7 +69,7 @@ const CreateFatture = () => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="validationCustom01">
               <Form.Label>Cliente ID</Form.Label>
-              <Form.Control type="text" name="clientId" onChange={handleChangeClientId} required />
+              <Form.Control type="text" name="clienteId" onChange={handleChangeClientId} required />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom02">

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchFatture } from "../redux/actions";
 
 const ModifyFatture = (props) => {
-  //   const token = useSelector((state) => state.token.content);
-
+  const token = useSelector((state) => state.token.content);
   const [importo, setImporto] = useState(props.importo || "");
   const [statoFattura, SetStatoFattura] = useState(props.statoFattura || "");
   const [clienteId, setClienteId] = useState(props.clienteId || "");
@@ -35,8 +34,7 @@ const ModifyFatture = (props) => {
           clienteId: clienteId,
         }),
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0IiwiaWF0IjoxNzAwNTc0MjYxLCJleHAiOjE3MDExNzkwNjF9.3e4uw2V3-ECTm3CeD8xx8SzAwKN2qPf3zamSY-NNVek",
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json",
         },
       });
@@ -74,25 +72,26 @@ const ModifyFatture = (props) => {
           <Modal.Body>
             <Form.Group className="mb-3" controlId="validationCustom01">
               <Form.Label>Cliente ID</Form.Label>
-              <Form.Control type="text" name="clienteID" onChange={handleChangeClienteId} required />
+              <Form.Control type="text" name="clienteID" onChange={handleChangeClienteId} />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom02">
               <Form.Label>Importo</Form.Label>
-              <Form.Control type="text" name="importo" onChange={handleChangeImporto} required />
+              <Form.Control type="text" name="importo" onChange={handleChangeImporto} />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom03">
               <Form.Label>Numero Fattura</Form.Label>
-              <Form.Control type="text" name="numeroFattura" onChange={handleChangeNumeroFattura} required />
+              <Form.Control type="text" name="numeroFattura" onChange={handleChangeNumeroFattura} />
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="validationCustom04">
               <Form.Label>stato Fattura</Form.Label>
-              <Form.Control as="select" name="statoFattura" onChange={handleChangeStatoFattura} required>
+              <Form.Control as="select" name="statoFattura" onChange={handleChangeStatoFattura}>
                 <option value="">Seleziona uno stato</option>
-                <option value="BOZZA">BOZZA</option>
-                <option value="PAGATA">PAGATA</option>{" "}
+                <option value="BOZZA">Bozza</option>
+                <option value="PAGATA">Pagata</option>
+                <option value="RIFIUTATA">Rifiutata</option>
               </Form.Control>
               <Form.Control.Feedback type="invalid">Campo obbligatorio</Form.Control.Feedback>
             </Form.Group>

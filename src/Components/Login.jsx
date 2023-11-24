@@ -17,6 +17,9 @@ function Login() {
     };
 
     dispatch(LoginProfile(body));
+    setTimeout(() => {
+      navigation("/home");
+    }, 2000);
   };
   return (
     <form className="mt-5" onSubmit={handleSubmit}>

@@ -12,21 +12,29 @@ const ListaClienti = () => {
       {clientiState.lenght !== 0 ? (
         <>
           {clientiState.map((clienti, i) => (
-            <Row key={i}>
-              <Col xs={2}>{clienti.id}</Col>
-              <Col>
+            <Row key={i} className="list-group list-group-horizontal">
+              <Col xs={1} className="list-group-item">
+                {clienti.id}
+              </Col>
+              <Col xs={2} className="list-group-item">
                 {clienti.nomeContatto} {clienti.cognomeContatto}
               </Col>
-              <Col>{clienti.emailContatto}</Col>
-              <Col>{clienti.telefonoContatto}</Col>
-              <Col>{clienti.fatturatoAnnuale}</Col>
-              <Col>
+              <Col xs={2} className="list-group-item">
+                {clienti.emailContatto}
+              </Col>
+              <Col xs={1} className="list-group-item">
+                {clienti.telefonoContatto}
+              </Col>
+              <Col xs={1} className="list-group-item">
+                {clienti.fatturatoAnnuale}
+              </Col>
+              <Col xs={2} className="list-group-item">
                 Via {clienti.indirizzo1.via} {clienti.indirizzo1.civico} {clienti.indirizzo1.comune.nome}
               </Col>
-              <Col>
+              <Col xs={1} className="list-group-item">
                 <Button onClick={() => dispatch(deleteCliente(clienti.id))}>Remove</Button>
               </Col>
-              <Col>
+              <Col xs={2} className="list-group-item">
                 <ModifyClienti idProp={clienti.id} />
               </Col>
             </Row>

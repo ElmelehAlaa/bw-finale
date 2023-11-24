@@ -9,28 +9,42 @@ const Users = () => {
   console.log(userState);
   return (
     <Container>
-      <Row className="mt-5 mb-3">
-        <Col>ID</Col>
-        <Col>Nome Cognome</Col>
-        <Col>Email</Col>
-        <Col>Username</Col>
-        <Col></Col>
-        <Col></Col>
+      <Row className="list-group list-group-horizontal mt-5">
+        <Col xs={1} className="list-group-item">
+          ID
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Nome Cognome
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Email
+        </Col>
+        <Col xs={2} className="list-group-item">
+          Username
+        </Col>
+        <Col xs={2} className="list-group-item"></Col>
+        <Col xs={2} className="list-group-item"></Col>
       </Row>
       {userState.lenght !== 0 ? (
         <>
           {userState.map((clienti, i) => (
-            <Row key={i}>
-              <Col>{clienti.id}</Col>
-              <Col>
+            <Row key={i} className="list-group list-group-horizontal">
+              <Col xs={1} className="list-group-item">
+                {clienti.id}
+              </Col>
+              <Col xs={2} className="list-group-item">
                 {clienti.nome} {clienti.cognome}
               </Col>
-              <Col>{clienti.email}</Col>
-              <Col>{clienti.username}</Col>
-              <Col>
+              <Col xs={2} className="list-group-item">
+                {clienti.email}
+              </Col>
+              <Col xs={2} className="list-group-item">
+                {clienti.username}
+              </Col>
+              <Col xs={2} className="list-group-item">
                 <Button onClick={() => dispatch(deleteUsers(clienti.id))}>Remove</Button>
               </Col>
-              <Col>
+              <Col xs={2} className="list-group-item">
                 <ModifyUsers idProp={clienti.id} />
               </Col>
             </Row>

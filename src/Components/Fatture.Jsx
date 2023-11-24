@@ -10,7 +10,7 @@ const Fatture = () => {
   const navigation = useNavigate();
 
   return (
-    <Container>
+    <Container className="fatture-container">
       <Row>
         <Col xs={12} md={6} lg={6}>
           <div className="card">

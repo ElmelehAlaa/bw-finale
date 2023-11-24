@@ -24,7 +24,7 @@ function BasicExample() {
     };
 
     dispatch(RegisterProfile(body));
-    navigation("");
+    navigation("/");
   };
   return (
     <Form className="d-flex align-items-center flex-column" onSubmit={handleSubmit}>

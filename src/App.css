@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+.fatture-container {
+  background-image: url("https://img.freepik.com/premium-vector/3d-cash-receipt-cartoon-style-icon-paper-bill-with-gold-coin-business-design-element-banners_257312-2377.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-home-page-container {
+  background-image: url("https://www.commercialistatelematico.com/wp-content/uploads/2023/11/fatturazione-elettronica-forfettari.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -21,7 +21,7 @@ const ListaClienti = () => {
               <Col>{clienti.telefonoContatto}</Col>
               <Col>{clienti.fatturatoAnnuale}</Col>
               <Col>
-                Via {clienti.indirizzo1.via} {clienti.indirizzo1.civico} {clienti.indirizzo1.comune.nome}
+                {clienti.indirizzo1.via} {clienti.indirizzo1.civico} {clienti.indirizzo1.comune.nome}
               </Col>
               <Col>
                 <Button onClick={() => dispatch(deleteCliente(clienti.id))}>Remove</Button>

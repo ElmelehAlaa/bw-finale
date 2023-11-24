@@ -1,4 +1,5 @@
 export const GET_FATTURE = "GET_FATTURE";
+export const DELETE_FATTURA = "DELETE_FATTURA";
 
 export const TOKEN = "TOKEN";
 export const GET_CLIENTI = "GET_CLIENTI";
@@ -9,16 +10,20 @@ export const GET_USERS = "GET_USERS";
 //     Authorization: "Bearer ",
 //   },
 // };
-const baseEndPointfatture = "http://localhost:3001/fatture";
-export const fetchFatture = () => {
-  return async (dispatch, getState) => {
+
+export const fetchFatture = (queryParams) => {
+  return async (dispatch) => {
     try {
-      let resp = await fetch(baseEndPointfatture, {
+      const queryString = new URLSearchParams(queryParams).toString();
+
+      let resp = await fetch(`${baseEndPoint}?${queryString}`, {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + getState().token.content,
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNzAwNzI5NDUzLCJleHAiOjE3MDEzMzQyNTN9.60Gb5CcjzJB1zsJyCXzEXMqwXaalAp6izPeb4YuwEB4",
         },
       });
+
       if (resp.ok) {
         let myFattureFetched = await resp.json();
         dispatch({ type: GET_FATTURE, payload: myFattureFetched });

@@ -6,6 +6,8 @@ import MyNavBar from "./Components/MyNavBar";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import MyHomePage from "./Components/MyHomePage";
+
+import ListaFatture from "./Components/ListaFatture.jsx";
 import Fatture from "./Components/Fatture.jsx";
 import Clienti from "./Components/Clienti";
 import CreateClienti from "./Components/CreateClienti";
@@ -23,6 +25,7 @@ function App() {
           <Route path="/home" element={<MyHomePage />} />
           <Route path="/clienti" element={<Clienti />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/visualizza-fatture" element={<ListaFatture />} />
         </Routes>
       </BrowserRouter>
     </div>

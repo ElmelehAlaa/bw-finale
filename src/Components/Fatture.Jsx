@@ -36,7 +36,7 @@ const Fatture = () => {
               alt="..."
             />
             <div className="card-body">
-              <h5 className="card-title">Visualizza tutte le Fatture</h5>
+              <h5 className="card-title">Visualizza Fatture</h5>
               <Button
                 onClick={() => {
                   navigation("/visualizza-fatture");

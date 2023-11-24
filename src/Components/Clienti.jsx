@@ -5,7 +5,7 @@ import CreateClienti from "./CreateClienti";
 
 function Clienti() {
   return (
-    <Container>
+    <Container fluid>
       <Row className="list-group list-group-horizontal mt-5">
         <Col xs={1} className="list-group-item">
           Id

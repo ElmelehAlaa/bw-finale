@@ -32,7 +32,9 @@ const ListaClienti = () => {
                 {clienti.indirizzo1.via} {clienti.indirizzo1.civico} {clienti.indirizzo1.comune.nome}
               </Col>
               <Col xs={1} className="list-group-item">
-                <Button onClick={() => dispatch(deleteCliente(clienti.id))}>Remove</Button>
+                <Button variant="danger" onClick={() => dispatch(deleteCliente(clienti.id))}>
+                  Remove
+                </Button>
               </Col>
               <Col xs={2} className="list-group-item">
                 <ModifyClienti idProp={clienti.id} />

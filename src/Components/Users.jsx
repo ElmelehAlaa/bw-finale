@@ -42,7 +42,9 @@ const Users = () => {
                 {clienti.username}
               </Col>
               <Col xs={2} className="list-group-item">
-                <Button onClick={() => dispatch(deleteUsers(clienti.id))}>Remove</Button>
+                <Button variant="danger" onClick={() => dispatch(deleteUsers(clienti.id))}>
+                  Remove
+                </Button>
               </Col>
               <Col xs={2} className="list-group-item">
                 <ModifyUsers idProp={clienti.id} />
